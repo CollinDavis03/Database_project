@@ -43,3 +43,15 @@ CREATE TABLE location (
         status IN ('Active', 'Inactive')
     )
 );
+
+-- 3. Catalog_Section
+-- 4. Catalog
+-- 5. Item
+
+-- PERMISSIONS & ACCESS CONTROL LAYER (RBAC)
+-- 6. Staff
+-- 7. Role
+-- 8. Permission
+-- 9. Staff_Role (junction)
+-- 10. Role_Permission (junction)
+-- 11. Staff_Location (junction)
