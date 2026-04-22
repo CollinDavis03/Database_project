@@ -1,5 +1,6 @@
-CREATE DATABASE UWITInven;
-USE UWITInven; 
+CREATE DATABASE UWITSchema;
+USE UWITSchema; 
+DROP DATABASE UWITSchema;
 
 -- Drop tables in reverse dependency order (children before parents)
 DROP TABLE IF EXISTS staff_location;
@@ -23,6 +24,7 @@ CREATE TABLE building (
     PRIMARY KEY (building_id),
     UNIQUE (code)
 );
+SELECT * FROM building;
 
 -- 2. Location
 CREATE TABLE location (
@@ -43,6 +45,7 @@ CREATE TABLE location (
         status IN ('Active', 'Inactive')
     )
 );
+SELECT * FROM location;
 
 -- 3. Catalog Section
 CREATE TABLE catalog_section (
@@ -53,6 +56,7 @@ CREATE TABLE catalog_section (
     CONSTRAINT fk_catalog_section_self FOREIGN KEY (parent_id) 
         REFERENCES catalog_section(section_id)
 );
+SELECT * FROM catalog_section;
 
 -- 4. Catalog
 CREATE TABLE catalog (
@@ -70,6 +74,7 @@ CREATE TABLE catalog (
         status IN ('Active', 'Inactive')
 	)
 );
+SELECT * FROM catalog;
 
 -- 5. Item
 CREATE TABLE item (
@@ -92,7 +97,7 @@ CREATE TABLE item (
         status in ('Operational','In Repair','Retired')
 	)
 );
-
+SELECT * FROM item;
 
 -- 6. Staff
 CREATE TABLE staff (
@@ -107,7 +112,7 @@ CREATE TABLE staff (
 	   employment_type in ('Full-Time','Student Employee')
 	)
 );
-
+SELECT * FROM staff;
 
 -- 7. Role
 CREATE TABLE role (
@@ -116,7 +121,7 @@ CREATE TABLE role (
     description     TEXT          NOT NULL, 
     PRIMARY  KEY (role_id)
 );
-
+SELECT * FROM role;
 
 -- 8. Permission
 CREATE TABLE permission (
@@ -125,7 +130,7 @@ CREATE TABLE permission (
     description     TEXT           NOT NULL, 
     PRIMARY KEY (permission_id)
 );
-
+SELECT * FROM permission;
 
 -- 9. Staff_Role
 CREATE TABLE staff_role (
@@ -138,7 +143,7 @@ CREATE TABLE staff_role (
 	CONSTRAINT fk_role_s FOREIGN KEY (role_id)
         REFERENCES role(role_id)
 );
-
+SELECT * FROM staff_role;
 
 -- 10. Role_Permission
 CREATE TABLE role_permission (
@@ -150,7 +155,7 @@ CREATE TABLE role_permission (
 	CONSTRAINT fk_permission_r FOREIGN KEY (permission_id)
         REFERENCES permission(permission_id)
 );
-
+SELECT * FROM role_permission;
 
 -- 11. Staff_Location
 CREATE TABLE staff_location (
@@ -163,3 +168,4 @@ CREATE TABLE staff_location (
 	CONSTRAINT fk_location_s FOREIGN KEY (location_id)
         REFERENCES location(location_id)
 );
+SELECT * FROM staff_location;
