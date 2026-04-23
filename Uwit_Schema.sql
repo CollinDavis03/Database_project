@@ -159,10 +159,11 @@ SELECT * FROM role_permission;
 
 -- 11. Staff_Location
 CREATE TABLE staff_location (
-	staff_id        INT            NOT NULL, 
-    location_id     INT            NOT NULL, 
-    assigned_date   DATE, 
-    PRIMARY KEY (staff_id, location_id), 
+	staff_id        INT            NOT NULL,
+    location_id     INT            NOT NULL,
+    assigned_date   DATE,
+    role            VARCHAR(50),
+    PRIMARY KEY (staff_id, location_id),
     CONSTRAINT fk_staff_l FOREIGN KEY (staff_id)
         REFERENCES staff(staff_id),
 	CONSTRAINT fk_location_s FOREIGN KEY (location_id)
