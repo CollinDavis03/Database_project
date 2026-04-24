@@ -1,3 +1,9 @@
+-- ============================================================
+-- Delete
+-- ============================================================
+
+SET SQL_SAFE_UPDATES = 0;
+
 -- Delete Staff_Location
 DELETE FROM staff_location;
 SELECT * FROM staff_location;
@@ -41,3 +47,5 @@ SELECT * FROM role;
 -- Delete Staff
 DELETE FROM staff;
 SELECT * FROM staff;
+
+SET SQL_SAFE_UPDATES = 1;
